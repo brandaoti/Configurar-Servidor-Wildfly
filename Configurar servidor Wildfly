@@ -1,0 +1,61 @@
+step 1 - executar add-user.bat dentro da pasta bin do wildfly
+setp 2 - add o tipo de usuario, Management ou Application
+step 3 - add o nome de usuario de login do servidor
+step 4 - add a senha do usuario de login do servidor
+step 5 - definir o grupo do usuario - finish
+
+Criar as datasource que precisar.
+
+1 - definir na pasta modules o caminho mysql/main e criar o arquivo xml e o driver mysql. 
+
+<module name="com.mysql" xmlns="urn:jboss:module:1.5">
+<resource-root path="mysql-connector-java-8.0.15.jar"
+
+OBS: sempre reiniciar o servidor para validar as informações a cada alteração.
+
+2 - criar o JDBC Drivers e Datasources no painel do servidor de usuario.
+
+Driver Name*         = mysql
+Driver Modules Name* = com.mysql
+Module Slot          = null
+Driver Classe Name   = com.mysql.cj.jdbc.Driver
+Driver Datasource    = null
+
+3 - Criar Datasource
+
+step 2 -
+Name * nome da datasource
+JNDI Name* java:/jdbc/nome
+
+step 3 - 
+Driver Name *           nome que foi definido no
+Driver Module Name *    nome do modulo do banco
+Driver Class Name *     caminho que foi definido no driver
+
+step 4 -
+
+URL - jdbc:mysql://localhost:3306/nome do banco 
+
+?userLegacyDatetimeCode=false => informação para desabilitar informação interna de codigo legado.
+
+&serverTimezone=America/Sao_Paulo => Vai se conectar no servidor que usa horario de Brasilia.
+
+&useSSL=false => Para servidores locais, localhost, pode deixar desabilitado.
+Conexao SSL é para conexoes seguras, pode habilitar pra deixar o servidor mais seguro.
+
+step 5 -
+
+User name = nome que foi definido pra logar no banco de dados
+Password = senha que foi definida pra logar no banco de dados
+Security = null
+
+Feita conexao, apos isso a conexao estara completada.
+
+
+
+
+
+
+
+
+
